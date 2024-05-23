@@ -29,7 +29,7 @@ For class Board:
         for i, row in enumerate(self.board):
             print(f"{i+1} {' | '.join(row)}")
             if i < 2:
-                print(" ---|---|---")
+                print(" ---|---|---")                
 
     def update_board(self, row, col, player):
         if self.board[row][col] == ' ':
@@ -162,6 +162,38 @@ For class player:
                     print("Invalid input. Please enter numbers between 1 and 3.")
             except ValueError:
                 print("Invalid input. Please enter numbers between 1 and 3.")
+
+Inheritance 
+
+Inheritance is a key concept in object-oriented programming where a new class (subclass) is created by deriving properties and behaviors from an existing class (superclass).In this segmentation, the Player class serves as the superclass, and the ComputerPlayer class inherits from it.
+
+
+For class player:
+
+    def get_move(self):
+        while True:
+            try:
+                row = int(input(f"Player {self.symbol}, enter the row (1-3): ")) - 1
+                col = int(input(f"Player {self.symbol}, enter the column (1-3): ")) - 1
+                if row in range(3) and col in range(3):
+                    return row, col
+                else:
+                    print("Invalid input. Please enter numbers between 1 and 3.")
+            except ValueError:
+                print("Invalid input. Please enter numbers between 1 and 3.")
+
+For class ComputerPlayer:
+
+
+
+
+    def get_move(self):
+        row = random.randint(0, 2)
+        col = random.randint(0, 2)
+        return row, col
+
+
+
 
 
 
