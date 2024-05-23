@@ -1,1 +1,10 @@
+INTRODUCTION:
+This repository contains a Python implementation of the classic Tic Tac Toe game. The game is designed to be played in the console, providing a simple yet enjoyable gaming experience.
+HOW TO RUN THIS PROGRAM
+Clone the Repository: Clone this repository to your local machine using the following command:
+git clone https://github.com/harshitasaini25/tic-tac-toe.git
+Navigate to the Directory: Change your current directory to the cloned repository's directory:
+cd tic-tac-toe
+Run the Program: Execute the tic_tac_toe.py file using a Python 3 interpreter:
+python3 tic_tac_toe.py
 
