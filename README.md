@@ -1,25 +1,27 @@
-INTRODUCTION:
+###INTRODUCTION:
 
 This repository contains a Python implementation of the classic Tic Tac Toe game. The game is designed to be played in the console, providing a simple yet enjoyable gaming experience.
+
 HOW TO RUN THIS PROGRAM
+
 Clone the Repository: Clone this repository to your local machine using the following command:
 git clone https://github.com/harshitasaini25/tic-tac-toe.git
 
 Navigate to the Directory: Change your current directory to the cloned repository's directory:
 cd tic-tac-toe
 
-Run the Program: Execute the tic_tac_toe.py file using a Python 3 interpreter:
+##Run the Program: Execute the tic_tac_toe.py file using a Python 3 interpreter:
 python3 tic_tac_toe.py
 
-How to use this program:
+##How to use this program:
 Enter the row and column numbers (1-3) to place your symbol (X or O) on the board.
 Continue taking turns with your opponent until one player wins or the game ends in a draw.
 
-Body\Analysis
+###Body\Analysis
 
-Object oriented Programming (OOP) pillars
+##Object oriented Programming (OOP) pillars
 
-Encapsulation
+#Encapsulation
 Each segment encapsulates a specific aspect of the game: the board, the players, and the game itself. This enhances modularity and readability, making it easier to understand and maintain the code.
 
 For class Board:
@@ -194,6 +196,90 @@ For class ComputerPlayer:
 
 
 
+Design patterns 
+
+Factory method pattern
+
+This implementation allows for the creation of different types of players based on the specified player type, adhering to the Factory Method pattern.
+
+class PlayerFactory:
+
+    def create_player(player_type, symbol):
+        if player_type == "human":
+            return Player(symbol)
+        elif player_type == "computer":
+            return ComputerPlayer(symbol)
+        else:
+            raise ValueError("Invalid player type")
+
+
+The Template method
+
+This structure allows for easy customization and extension of specific steps without altering the overall structure of the game loop, adhering to the Template Method pattern.
+
+For class game:
+
+    
+
+    def play(self):
+        while True:
+            self.print_board()
+            row, col = self.get_move()
+            
+            if self.update_board(row, col, self.players[self.current_player_idx].symbol):
+                if self.check_winner(self.players[self.current_player_idx].symbol):
+                    self.print_board()
+                    print(f"Player {self.players[self.current_player_idx].symbol} wins!")
+                    break
+                elif self.is_full():
+                    self.print_board()
+                    print("The game is a draw!")
+                    break
+                
+                self.switch_player()
+            else:
+                print("Cell is already occupied. Try again.")
 
 
 
+File reading and writing
+
+In the given application , the get_move function acts as a read function:
+
+    def get_move(self):
+        while True:
+            try:
+                row = int(input(f"Player {self.symbol}, enter the row (1-3): ")) - 1
+                col = int(input(f"Player {self.symbol}, enter the column (1-3): ")) - 1
+                if row in range(3) and col in range(3):
+                    return row, col
+                else:
+                    print("Invalid input. Please enter numbers between 1 and 3.")
+            except ValueError:
+                print("Invalid input. Please enter numbers between 1 and 3.")
+
+In the given application, update_board function acts as the write function:
+
+    def update_board(self, row, col, player):
+        if self.board[row][col] == ' ':
+            self.board[row][col] = player
+            return True
+        else:
+            return False
+
+
+
+Results and summary
+
+The code defines classes for a Tic-Tac-Toe game, including the board, players (human and computer), and a factory for player creation.
+
+Players take turns making moves on the board, with human players inputting their moves through the console and computer players making random moves.
+
+After each move, the game checks for a winner by examining rows, columns, and diagonals, ending the game if a winner is found or the board is full.
+
+The main script initializes the game and runs a loop where players alternate turns until the game concludes, displaying the final board state and announcing the winner or a draw.
+
+
+Conclusion
+
+This code presents a concise implementation of Tic-Tac-Toe in Python, featuring human vs. computer or human vs. human gameplay options. It offers a clear structure with classes for the game board, players, and game management. Players can interact via the console, and the game logic efficiently checks for winners and draws.
