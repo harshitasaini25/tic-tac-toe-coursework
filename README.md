@@ -1,27 +1,31 @@
-###INTRODUCTION:
+***INTRODUCTION:***
 
 This repository contains a Python implementation of the classic Tic Tac Toe game. The game is designed to be played in the console, providing a simple yet enjoyable gaming experience.
 
-HOW TO RUN THIS PROGRAM
+***HOW TO RUN THIS PROGRAM***
 
 Clone the Repository: Clone this repository to your local machine using the following command:
 git clone https://github.com/harshitasaini25/tic-tac-toe.git
 
 Navigate to the Directory: Change your current directory to the cloned repository's directory:
-cd tic-tac-toe
+ 
+     cd tic-tac-toe
 
 ##Run the Program: Execute the tic_tac_toe.py file using a Python 3 interpreter:
-python3 tic_tac_toe.py
 
-##How to use this program:
+    python3 tic_tac_toe.py
+
+***How to use this program:***
+
 Enter the row and column numbers (1-3) to place your symbol (X or O) on the board.
 Continue taking turns with your opponent until one player wins or the game ends in a draw.
 
-###Body\Analysis
+***Body\Analysis***
 
-##Object oriented Programming (OOP) pillars
+**Object oriented Programming (OOP) pillars**
 
-#Encapsulation
+**Encapsulation**
+
 Each segment encapsulates a specific aspect of the game: the board, the players, and the game itself. This enhances modularity and readability, making it easier to understand and maintain the code.
 
 For class Board:
@@ -98,7 +102,7 @@ For class Game:
                 print("Cell is already occupied. Try again.")
 
 
-Abstraction
+***Abstraction***
 
 Abstraction involves hiding the complex implementation details and showing only the essential features of an object. In the context of this code, the abstraction is mainly represented by the methods of the Board and Player classes, which provide a simplified interface for interacting with the game components.
 
@@ -147,7 +151,7 @@ For class player:
             except ValueError:
                 print("Invalid input. Please enter numbers between 1 and 3.")
 
-Polymorphism
+***Polymorphism***
 
 Polymorphism allows objects of different classes to be treated as objects of a common superclass. In the context of this code, polymorphism is demonstrated through the Player class. Both Player objects are treated interchangeably in the Game class, as they both have the get_move method.
 
@@ -165,7 +169,7 @@ For class player:
             except ValueError:
                 print("Invalid input. Please enter numbers between 1 and 3.")
 
-Inheritance 
+***Inheritance*** 
 
 Inheritance is a key concept in object-oriented programming where a new class (subclass) is created by deriving properties and behaviors from an existing class (superclass).In this segmentation, the Player class serves as the superclass, and the ComputerPlayer class inherits from it.
 
@@ -196,9 +200,9 @@ For class ComputerPlayer:
 
 
 
-Design patterns 
+***Design patterns*** 
 
-Factory method pattern
+**Factory method pattern**
 
 This implementation allows for the creation of different types of players based on the specified player type, adhering to the Factory Method pattern.
 
@@ -213,7 +217,8 @@ class PlayerFactory:
             raise ValueError("Invalid player type")
 
 
-The Template method
+
+**The Template method**
 
 This structure allows for easy customization and extension of specific steps without altering the overall structure of the game loop, adhering to the Template Method pattern.
 
@@ -242,7 +247,7 @@ For class game:
 
 
 
-File reading and writing
+***File reading and writing***
 
 In the given application , the get_move function acts as a read function:
 
@@ -269,7 +274,7 @@ In the given application, update_board function acts as the write function:
 
 
 
-Results and summary
+***Results and summary***
 
 The code defines classes for a Tic-Tac-Toe game, including the board, players (human and computer), and a factory for player creation.
 
@@ -280,6 +285,6 @@ After each move, the game checks for a winner by examining rows, columns, and di
 The main script initializes the game and runs a loop where players alternate turns until the game concludes, displaying the final board state and announcing the winner or a draw.
 
 
-Conclusion
+***Conclusion***
 
 This code presents a concise implementation of Tic-Tac-Toe in Python, featuring human vs. computer or human vs. human gameplay options. It offers a clear structure with classes for the game board, players, and game management. Players can interact via the console, and the game logic efficiently checks for winners and draws.
