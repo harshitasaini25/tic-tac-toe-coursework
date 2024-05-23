@@ -60,28 +60,55 @@ class ComputerPlayer(Player):
         return row, col
 
 
+class PlayerFactory:
+    @staticmethod
+    def create_player(player_type, symbol):
+        if player_type == "human":
+            return Player(symbol)
+        elif player_type == "computer":
+            return ComputerPlayer(symbol)
+        else:
+            raise ValueError("Invalid player type")
+
+
 class Game:
-    def __init__(self):
+    def __init__(self, player_types=('human', 'computer')):
         self.board = Board()
-        self.players = [Player('X'), ComputerPlayer('O')]  # One player is a ComputerPlayer
+        self.players = [PlayerFactory.create_player(player_type, symbol) 
+                        for player_type, symbol in zip(player_types, ['X', 'O'])]
         self.current_player_idx = 0
 
     def switch_player(self):
         self.current_player_idx = 1 - self.current_player_idx
 
+    def print_board(self):
+        self.board.print_board()
+
+    def get_move(self):
+        current_player = self.players[self.current_player_idx]
+        return current_player.get_move()
+
+    def update_board(self, row, col, player_symbol):
+        return self.board.update_board(row, col, player_symbol)
+
+    def check_winner(self, player_symbol):
+        return self.board.check_winner(player_symbol)
+
+    def is_full(self):
+        return self.board.is_full()
+
     def play(self):
         while True:
-            self.board.print_board()
-            current_player = self.players[self.current_player_idx]
-            row, col = current_player.get_move()
+            self.print_board()
+            row, col = self.get_move()
             
-            if self.board.update_board(row, col, current_player.symbol):
-                if self.board.check_winner(current_player.symbol):
-                    self.board.print_board()
-                    print(f"Player {current_player.symbol} wins!")
+            if self.update_board(row, col, self.players[self.current_player_idx].symbol):
+                if self.check_winner(self.players[self.current_player_idx].symbol):
+                    self.print_board()
+                    print(f"Player {self.players[self.current_player_idx].symbol} wins! SKILL ISSUE")
                     break
-                elif self.board.is_full():
-                    self.board.print_board()
+                elif self.is_full():
+                    self.print_board()
                     print("The game is a draw!")
                     break
                 
@@ -92,3 +119,4 @@ class Game:
 if __name__ == "__main__":
     game = Game()
     game.play()
+
